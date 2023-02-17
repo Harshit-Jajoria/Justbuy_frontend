@@ -34,6 +34,7 @@ import OrderListScreen from './screens/OrderListScreen';
 import UserListScreen from './screens/UserListScreen';
 import UserEditScreen from './screens/UserEditScreen';
 import MapScreen from './screens/MapScreen';
+import { BASE_URL } from './constants';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -52,7 +53,7 @@ function App() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const { data } = await axios.get(`https://justbuy-backend-harshit-jajoria.vercel.app/api/products/categories`);
+        const { data } = await axios.get(`${BASE_URL}/api/products/categories`);
         console.log(data);
         setCategories(data);
       } catch (err) {

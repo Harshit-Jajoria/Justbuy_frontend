@@ -10,6 +10,7 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { Store } from '../Store';
 import { getError } from '../utils';
+import { BASE_URL } from '../constants';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -51,7 +52,7 @@ export default function UserEditScreen() {
     const fetchData = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`/api/users/${userId}`, {
+        const { data } = await axios.get(`${BASE_URL}/api/users/${userId}`, {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         });
         setName(data.name);
@@ -73,7 +74,7 @@ export default function UserEditScreen() {
     try {
       dispatch({ type: 'UPDATE_REQUEST' });
       await axios.put(
-        `/api/users/${userId}`,
+        `${BASE_URL}/api/users/${userId}`,
         { _id: userId, name, email, isAdmin },
         {
           headers: { Authorization: `Bearer ${userInfo.token}` },

@@ -8,6 +8,7 @@ import MessageBox from '../components/MessageBox';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import { BASE_URL } from '../constants';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -36,7 +37,7 @@ export default function DashboardScreen() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get('/api/orders/summary', {
+        const { data } = await axios.get(`${BASE_URL}/api/orders/summary`, {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         });
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
