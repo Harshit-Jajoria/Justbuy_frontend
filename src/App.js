@@ -52,7 +52,7 @@ function App() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const { data } = await axios.get(`/api/products/categories`);
+        const { data } = await axios.get(`https://justbuy-backend-harshit-jajoria.vercel.app/api/products/categories`);
         console.log(data);
         setCategories(data);
       } catch (err) {
